@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- <script src="creatElement.js"></script> -->
+    <script src="jquery-3.2.1.js"></script>
+    <!-- <script src="Ajax.js></script> -->
+    <script src="RemoveElement.js"></script>
+    <script src="addLoadEvent.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">智邮普创</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="starter">
+            <h1>To Do List</h1>
+        </div>
+    </div>
+
+        <div class="container">
+            <select class="form-control sec">
+                <option class="study" aria-activedescendant="">学习</option>
+                <option class="daily">生活</option>
+                <optio classn>紧急</option>
+            </select>
+            <input class="form-control input" placeholder="请输入你想添加的事件！">
+            <button class="btn btn-info button" onclick="addElement()">添加</button>
+        </div>
+
+
+    <div class="container">
+        <div class="list-group text">
+            <span class="span_one"><h2>已完成</h2></span>
+            <span class="span_two"><h2>未完成</h2></span>
+        </div>
+
+        <div class="left box" id="left">
+            <div class="add" id="demo">
+                <p class="hello">1</p>
+                <input class="btn btn-danger btn-sm" type="button" value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">2</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">3</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">4</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">5</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">6</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="hello">7</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+
+        </div>
+
+        <div class="right box">
+            <div class="add">
+                <p class="todo_hello">1</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">2</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">3</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">4</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">5</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">6</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+            <div class="add">
+                <p class="todo_hello">7</p>
+                <input class="btn btn-danger btn-sm" type="button"  value="删除" onclick="RemoveElement(this)">
+            </div>
+        </div>
+    </div>
+    <script>
+        var txt = document.getElementsByClassName("input")[0].value;
+        var xml_data = {
+            "content"= "txt";
+                      }
+
+        $.ajax({
+         type:"POST",
+         url:"",
+         processData:ture,
+       contentType: "application/json;charset=utf-8",//发送信息至服务器时内容的编码类型
+         dataType:"json",
+         data:JSON.stringify(xml_data),
+         success:function(){
+         var left = document.getElementById("left");
+                    var input = document.getElementsByClassName("input")[0];
+                    var div = document.createElement("div");
+                    var p = document.createElement("p");
+                    var btn = document.createElement("input");
+                    var content = document.createTextNode(xmlhttp.responseText);
+    
+                    div.setAttribute("class","add");
+                    p.setAttribute("class","hello");
+                    btn.setAttribute("class","btn btn-danger btn-sm");
+                    btn.setAttribute("type","button");
+                    btn.setAttribute("value","删除");
+                    btn.setAttribute("onclick","RemoveElement(this)");
+    
+                    p.appendChild(content);
+                    div.appendChild(p);
+                    div.appendChild(btn);
+                    left.appendChild(div);
+                    input.value = "";
+         }
+        })
+    </script>
+</body>
+</html>
